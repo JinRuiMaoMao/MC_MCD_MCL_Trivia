@@ -125,7 +125,7 @@ questions = [
 ]
 
 # -----------------------------
-# Quiz GUI class
+# Quiz GUI
 # -----------------------------
 class QuizGame:
     def __init__(self, root):
@@ -147,18 +147,18 @@ class QuizGame:
         # -----------------------------
         # Start frame (name & age input)
         # -----------------------------
-        self.start_frame = tk.Frame(root, bg="#1a1a1a")
+        self.start_frame = tk.Frame(root, bg="gray")
         self.start_frame.pack(expand=True, fill="both")
 
         tk.Label(self.start_frame, text="Welcome to Minecraft Trivia Quiz!\n"
                                         "(Play This In Full Screen!!!)",
-                 font=("Arial", 20, "bold"), fg="lime", bg="#1a1a1a").pack(pady=20)
+                 font=("Arial", 20, "bold"), fg="lime", bg="gray").pack(pady=20)
 
-        tk.Label(self.start_frame, text="Enter your name:", font=("Arial", 14), fg="white", bg="#1a1a1a").pack()
+        tk.Label(self.start_frame, text="Enter your name:", font=("Arial", 14), fg="white", bg="gray").pack()
         self.name_entry = tk.Entry(self.start_frame, font=("Arial", 14))
         self.name_entry.pack(pady=5)
 
-        tk.Label(self.start_frame, text="Enter your age:", font=("Arial", 14), fg="white", bg="#1a1a1a").pack()
+        tk.Label(self.start_frame, text="Enter your age:", font=("Arial", 14), fg="white", bg="gray").pack()
         self.age_entry = tk.Entry(self.start_frame, font=("Arial", 14))
         self.age_entry.pack(pady=5)
 
@@ -187,11 +187,11 @@ class QuizGame:
             self.diff_frame.destroy()
 
         # Difficulty frame
-        self.diff_frame = tk.Frame(self.root, bg="#0d0d0d")
+        self.diff_frame = tk.Frame(self.root, bg="gray")
         self.diff_frame.pack(expand=True, fill="both")
 
         tk.Label(self.diff_frame, text="Select Difficulty",
-                 font=("Arial", 22, "bold"), fg="cyan", bg="#0d0d0d").pack(pady=30)
+                 font=("Arial", 22, "bold"), fg="cyan", bg="gray").pack(pady=30)
         tk.Button(self.diff_frame, text="Easy (Minecraft only)", font=("Arial", 16),
                   bg="green", fg="white", command=lambda: self.start_quiz(10, "Easy")).pack(pady=15)
         tk.Button(self.diff_frame, text="Medium (Mix MC/MCD/MCL)", font=("Arial", 16),
@@ -239,15 +239,15 @@ class QuizGame:
         if hasattr(self, "q_frame"):
             self.q_frame.destroy()
 
-        self.q_frame = tk.Frame(self.root, bg="#0b0b0b")
+        self.q_frame = tk.Frame(self.root, bg="gray")
         self.q_frame.pack(expand=True, fill="both")
 
-        self.feedback_label = tk.Label(self.q_frame, text="", font=("Arial", 14), fg="white", bg="#0b0b0b")
+        self.feedback_label = tk.Label(self.q_frame, text="", font=("Arial", 14), fg="white", bg="gray")
         self.feedback_label.pack(side="bottom", pady=20)
 
         q = self.selected_questions[self.current_question]
         tk.Label(self.q_frame, text=f"Question {self.current_question + 1}: {q['question']}",
-                 font=("Arial", 16, "bold"), fg="lime", bg="#0b0b0b", wraplength=650).pack(pady=40)
+                 font=("Arial", 16, "bold"), fg="lime", bg="gray", wraplength=650).pack(pady=40)
 
         self.option_buttons = []
         for idx, option in enumerate(q['options']):
@@ -296,21 +296,21 @@ class QuizGame:
         if hasattr(self, "q_frame"):
             self.q_frame.destroy()
 
-        self.result_frame = tk.Frame(self.root, bg="#0a0a0a")
+        self.result_frame = tk.Frame(self.root, bg="gray")
         self.result_frame.pack(expand=True, fill="both")
 
-        tk.Label(self.result_frame, text="Quiz Results", font=("Arial", 22, "bold"), fg="yellow", bg="#0a0a0a").pack(pady=20)
-        tk.Label(self.result_frame, text=f"Player: {self.name}, Age: {self.age}", font=("Arial", 16), fg="white", bg="#0a0a0a").pack()
+        tk.Label(self.result_frame, text="Quiz Results", font=("Arial", 22, "bold"), fg="yellow", bg="gray").pack(pady=20)
+        tk.Label(self.result_frame, text=f"Player: {self.name}, Age: {self.age}", font=("Arial", 16), fg="white", bg="gray").pack()
         tk.Label(self.result_frame, text=f"Score: {self.score}/{self.num_questions} ({self.score / self.num_questions * 100:.2f}%)",
-                 font=("Arial", 16), fg="lime", bg="#0a0a0a").pack(pady=10)
+                 font=("Arial", 16), fg="lime", bg="gray").pack(pady=10)
 
         tk.Label(self.result_frame, text="Your Answers vs Correct Answers:", font=("Arial", 14, "underline"),
-                 fg="cyan", bg="#0a0a0a").pack(pady=10)
+                 fg="cyan", bg="gray").pack(pady=10)
         for idx, q in enumerate(self.selected_questions):
             correct_letter = q['answer']
             correct_option = q['options']['ABCD'.index(correct_letter)]
             tk.Label(self.result_frame, text=f"{idx + 1}. Your answer: {self.user_answers[idx]} | Correct: {correct_letter} - {correct_option}",
-                     font=("Arial", 12), fg="white", bg="#0a0a0a", anchor="w").pack(fill="x")
+                     font=("Arial", 12), fg="white", bg="gray", anchor="w").pack(fill="x")
 
         tk.Button(self.result_frame, text="Exit", font=("Arial", 16), bg="red", fg="white",
                   command=self.root.destroy).pack(pady=10)
@@ -336,7 +336,7 @@ class QuizGame:
 
 
 # -----------------------------
-# Run the GUI
+# Run the Game
 # -----------------------------
 if __name__ == "__main__":
     root = tk.Tk()
