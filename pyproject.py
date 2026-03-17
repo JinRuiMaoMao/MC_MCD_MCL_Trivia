@@ -3,6 +3,8 @@ from tkinter import messagebox
 import random
 import webbrowser
 
+
+
 # -----------------------------
 # Predefined Questions
 # -----------------------------
@@ -127,10 +129,25 @@ questions = [
 # -----------------------------
 # Quiz GUI
 # -----------------------------
+
 class QuizGame:
     def __init__(self, root):
-        # Initialize window
+
         self.root = root
+        self.root.attributes("-fullscreen", True)
+        self.root.fullscreen = False
+
+        def toggle_fullscreen(self, event):
+            self.root.fullscreen = not self.fullscreen
+            self.root.attributes("-fullscreen", self.fullscreen)
+            self.root.bind("<F11>", self.toggle_fullscreen)
+
+        def exit_fullscreen(self, event):
+            self.root.fullscreen = False
+            self.root.attributes("-fullscreen", self.fullscreen)
+            self.root.bind("<Escape>", self.exit_fullscreen)
+
+        # Initialize window
         self.root.title("Minecraft Trivia Quiz")
         self.root.geometry("700x500")
         self.root.config(bg="#1a1a1a")
