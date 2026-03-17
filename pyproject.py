@@ -1,44 +1,127 @@
 import tkinter as tk
 from tkinter import messagebox
 import random
+import webbrowser
 
 # -----------------------------
-# Questions database
+# Predefined Questions
 # -----------------------------
 questions = [
-    # Minecraft questions
-    {"question": "Which block is used to craft a crafting table?",
-     "options": ["Stone", "Wood", "Iron Block", "Sand"], "answer": "B"},
-    {"question": "Which mob does NOT burn in daylight?",
-     "options": ["Zombie", "Creeper", "Skeleton", "Enderman"], "answer": "D"},
-    {"question": "Which is the hardest block in Minecraft?",
-     "options": ["Stone", "Diamond Ore", "Bedrock", "Lapis Lazuli Ore"], "answer": "C"},
-    {"question": "Which material is used to craft an Enchanting Table?",
-     "options": ["Emerald", "Obsidian", "Redstone", "Gold Ingot"], "answer": "B"},
-    {"question": "In Creative Mode, does the player take damage?",
-     "options": ["Yes", "No", "Sometimes", "Not sure"], "answer": "B"},
+
+    # ----------------------------
+    # Minecraft
+    # ----------------------------
+
+    {
+        "question": "Minecraft: How many meters does one Minecraft block equal?",
+        "options": ["0.1", "0.5", "1", "1.5"],
+        "answer": "C"
+    },
+    {
+        "question": "When you first spawn in the game what dimension do you start in?",
+        "options": ["The Overworld", "The Nether", "The End", "The Void"],
+        "answer": "A"
+    },
+    {
+        "question": "What is the main objective of Minecraft?",
+        "options": ["Build A House", "Kill The Zombies", "Make Diamond Armors", "Kill the Ender Dragon"],
+        "answer": "D"
+    },
+    {
+        "question": "Who is the “feared player” in Minecraft?",
+        "options": ["Steve", "Herobrine", "Alex", "Ender"],
+        "answer": "B"
+    },
+    {
+        "question": "Which is the most important block type in Minecraft and is used to make everything else?",
+        "options": ["Wood", "Grass Block", "Stone", "Diamond"],
+        "answer": "A"
+    },
+    {
+        "question": "What is the name of an alternate world to which you can travel?",
+        "options": ["The Void", "The Heaven", "The Nether", "The ???"],
+        "answer": "C"
+    },
+    {
+        "question": "How far away can you be from a ghast for it to see you?",
+        "options": ["1 Block Away", "50 Blocks Away", "1000 Blocks Away", "100 Blocks Away"],
+        "answer": "D"
+    },
+    {
+        "question": "What are the two colors of clothes does Zombie wears?",
+        "options": ["Purple And Gray", "White And Black", "Blue And Green", "Green And Black"],
+        "answer": "C"
+    },
+    {
+        "question": "What does the creeper mob drop after it is killed?",
+        "options": ["TNT", "Gunpowder", "A Creeper Head", "Nothing"],
+        "answer": "B"
+    },
+    {
+        "question": "Which character in Minecraft drops Bones and arrows?",
+        "options": ["Skeleton", "Creeper", "Witch", "Zombie"],
+        "answer": "A"
+    },
+    {
+        "question": "What will happen if you stare at a Enderman?",
+        "options": ["It Will Attack You", "It Will Fly Away", "It Will Became Purple", "Do Nothing"],
+        "answer": "A"
+    },
+    {
+        "question": "Which mobs scare the Creeper in Minecraft?",
+        "options": ["Pig", "Cow", "Ocelot", "Parrot"],
+        "answer": "C"
+    },
+
+    # ----------------------------
     # Minecraft Dungeons
-    {"question": "Which artifact in Minecraft Dungeons shoots a fireball?",
-     "options": ["Soul Healer", "Fireworks Arrow", "Cursed Bow", "Fireworks Rocket"], "answer": "D"},
-    {"question": "Which enemy appears as the final boss in the default campaign?",
-     "options": ["Arch-Illager", "Redstone Golem", "Evoker", "Creeper King"], "answer": "A"},
-    {"question": "Which gear increases your movement speed?",
-     "options": ["Boots of Swiftness", "Golden Armor", "Heart of the Sea", "Chainmail Boots"], "answer": "A"},
-    {"question": "What is the default currency in Minecraft Dungeons?",
-     "options": ["Gold", "Emeralds", "Coins", "Diamonds"], "answer": "A"},
-    {"question": "Which mob throws fireballs at you in Dungeons?",
-     "options": ["Creeper", "Firebrand", "Evoker", "Vindicator"], "answer": "C"},
+    # ----------------------------
+
+    {
+        "question": "Minecraft Dungeons: How many slots does the Storage Chest in Camp have?",
+        "options": ["8", "300", "9", "500"],
+        "answer": "B"
+    },
+    {
+        "question": "How many merchants can be rescued for Camp?",
+        "options": ["6", "5", "4", "7"],
+        "answer": "A"
+    },
+    {
+        "question": "Which of these artifacts is NOT soul-powered?",
+        "options": ["Torment Quiver", "Totem of Casting", "Corrupted Pumpkin", "Thundering Quiver"],
+        "answer": "D"
+    },
+    {
+        "question": "What is the Nether DLC officially called?",
+        "options": ["Burning Nether", "Flames of the Nether", "Fires of the Nether", "Lost in the Nether"],
+        "answer": "B"
+    },
+    {
+        "question": "Which of these sub-missions CANNOT be found in an ancient hunt?",
+        "options": ["Nether Fortress", "Basalt Delta", "Nether Wastes", "Desert Temple"],
+        "answer": "C"
+    },
+
+    # ----------------------------
     # Minecraft Legends
-    {"question": "Who is the main protagonist in Minecraft Legends?",
-     "options": ["Alex", "Steve", "Illager Leader", "Arch-Illager"], "answer": "B"},
-    {"question": "Which biome is the starting area in Minecraft Legends?",
-     "options": ["Plains", "Savanna", "Forest", "Desert"], "answer": "A"},
-    {"question": "Which creature is NOT a threat in Legends?",
-     "options": ["Pillager", "Spider", "Illager Army", "Wolf"], "answer": "D"},
-    {"question": "What resource do you collect to upgrade your army in Legends?",
-     "options": ["Gold", "Emeralds", "Iron", "Diamonds"], "answer": "B"},
-    {"question": "Which building allows you to train units in Legends?",
-     "options": ["Barracks", "Forge", "Town Hall", "Blacksmith"], "answer": "A"},
+    # ----------------------------
+
+    {
+        "question": "Minecraft Legends: Will The Creeper Explode In Minecraft Legends?",
+        "options": ["Yes", "No", " ", " "],
+        "answer": "B"
+    },
+    {
+        "question": "What Is The Goal For Minecraft Legends?",
+        "options": ["Fight The Piglins", "Fight The Other Players", "Build A Big House", "Make A Weapon"],
+        "answer": "A"
+    },
+    {
+        "question": "Is There Creative Mode In Minecraft Legends?",
+        "options": ["Yes", "No", "Yes But Limited", "Yes But Cannot Fly"],
+        "answer": "B"
+    },
 ]
 
 # -----------------------------
@@ -67,8 +150,9 @@ class QuizGame:
         self.start_frame = tk.Frame(root, bg="#1a1a1a")
         self.start_frame.pack(expand=True, fill="both")
 
-        tk.Label(self.start_frame, text="Welcome to Minecraft Trivia Quiz!",
-                 font=("Arial", 22, "bold"), fg="lime", bg="#1a1a1a").pack(pady=20)
+        tk.Label(self.start_frame, text="Welcome to Minecraft Trivia Quiz!\n"
+                                        "(Play This In Full Screen!!!)",
+                 font=("Arial", 20, "bold"), fg="lime", bg="#1a1a1a").pack(pady=20)
 
         tk.Label(self.start_frame, text="Enter your name:", font=("Arial", 14), fg="white", bg="#1a1a1a").pack()
         self.name_entry = tk.Entry(self.start_frame, font=("Arial", 14))
@@ -109,11 +193,17 @@ class QuizGame:
         tk.Label(self.diff_frame, text="Select Difficulty",
                  font=("Arial", 22, "bold"), fg="cyan", bg="#0d0d0d").pack(pady=30)
         tk.Button(self.diff_frame, text="Easy (Minecraft only)", font=("Arial", 16),
-                  bg="#32cd32", fg="white", command=lambda: self.start_quiz(5, "Easy")).pack(pady=15)
+                  bg="green", fg="white", command=lambda: self.start_quiz(10, "Easy")).pack(pady=15)
         tk.Button(self.diff_frame, text="Medium (Mix MC/MCD/MCL)", font=("Arial", 16),
-                  bg="#1e90ff", fg="white", command=lambda: self.start_quiz(10, "Medium")).pack(pady=15)
+                  bg="blue", fg="white", command=lambda: self.start_quiz(15, "Medium")).pack(pady=15)
         tk.Button(self.diff_frame, text="Hard (All questions)", font=("Arial", 16),
-                  bg="#ff4500", fg="white", command=lambda: self.start_quiz(15, "Hard")).pack(pady=15)
+                  bg="red", fg="white", command=lambda: self.start_quiz(20, "Hard")).pack(pady=15)
+
+        def open_link(url):
+            webbrowser.open_new(url)
+
+        tk.Button(self.diff_frame, text="Go To Minecraft Wiki If You're Unsure!!!", font=("Arial", 12),
+                  bg="orange", fg="white", command=lambda: open_link("https://minecraft.wiki/")).pack(pady=20)
 
     # -----------------------------
     # Start the quiz with difficulty
@@ -121,10 +211,10 @@ class QuizGame:
     def start_quiz(self, num_questions, difficulty="Easy"):
         # Filter questions based on difficulty
         if difficulty == "Easy":
-            filtered_questions = questions[:5]  # Minecraft only
+            filtered_questions = questions[:10]  # Minecraft only
         elif difficulty == "Medium":
-            mc = questions[:5]
-            mcd_mcl = questions[5:]
+            mc = questions[:9]
+            mcd_mcl = questions[6:]
             filtered_questions = mc + random.sample(mcd_mcl, min(num_questions - len(mc), len(mcd_mcl)))
         else:  # Hard
             filtered_questions = questions
