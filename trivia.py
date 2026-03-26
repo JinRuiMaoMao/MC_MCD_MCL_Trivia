@@ -290,7 +290,7 @@ class QuizGame:
         else:
             correct_letter = q['answer']
             correct_option = q['options']['ABCD'.index(correct_letter)]
-            self.feedback_label.config(text=f"❌ Wrong! Correct: {correct_letter} - {correct_option}", bg="#e74c3c")
+            self.feedback_label.config(text=f"❌ Wrong! Correct: {correct_letter}. {correct_option}", bg="#e74c3c")
 
         self.root.after(1000, self.next_question)
 
@@ -324,7 +324,7 @@ class QuizGame:
         for idx, q in enumerate(self.selected_questions):
             correct_letter = q['answer']
             correct_option = q['options']['ABCD'.index(correct_letter)]
-            tk.Label(self.result_frame, text=f"{idx + 1}. Your answer: {self.user_answers[idx]} | Correct: {correct_letter} - {correct_option}",
+            tk.Label(self.result_frame, text=f"{idx + 1}. Your answer: {self.user_answers[idx]} | Correct: {correct_letter}. {correct_option}",
                      font=("Arial", 12), fg="white", bg="gray", anchor="w").pack(fill="x")
 
         tk.Button(self.result_frame, text="Exit", font=("Arial", 16), bg="red", fg="white",
